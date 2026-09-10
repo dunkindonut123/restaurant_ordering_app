@@ -1,0 +1,74 @@
+body{
+    margin: 0 auto;
+    width: 600px;
+
+}
+
+.header-banner{
+    height: 167px;
+    background-image: url("images/ferks-guare-KEZdWfYD-ow-unsplash\ 1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: "Smythe", system-ui;
+    padding: 1px 20px;
+}
+
+.container{
+    color: black;
+}
+
+.item-slot{
+    display: flex;
+    border-bottom: 1px solid black;
+    width: 550px;
+    margin: 0 auto;
+    
+}
+.item-icon{
+    font-size: 60px;
+    margin-right: 20px;
+
+}
+
+.item-details{
+    margin: auto;
+    /* background-color: yellow; */
+    width: 400px;
+}
+
+.item-button{
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: white;
+    border: 1px solid black;
+    margin: auto;
+}
+
+.order-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-list{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.name-remove{
+    display: flex;
+    gap: 20px;
+}
+
+#complete-btn{
+    background-color: #16DB99;
+    color: white;
+    width: 100%;
+    
+}
+
+
+
