@@ -18,6 +18,8 @@ body{
     color: black;
 }
 
+
+/* Slot per item */
 .item-slot{
     display: flex;
     border-bottom: 1px solid black;
@@ -25,18 +27,21 @@ body{
     margin: 0 auto;
     
 }
+
+/* Gambar icon */
 .item-icon{
     font-size: 60px;
     margin-right: 20px;
 
 }
 
+/* Detail icon berupa nama, ingredients, harga */
 .item-details{
     margin: auto;
-    /* background-color: yellow; */
     width: 400px;
 }
 
+/* Tombol untuk add item to cart */
 .item-button{
     height: 50px;
     width: 50px;
@@ -47,28 +52,49 @@ body{
 }
 
 .order-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 550px;
+    margin: 40px auto;
+
 }
 
-.order-list{
+/* 1 Order bar */
+.order-bar{
     display: flex;
-    width: 100%;
     justify-content: space-between;
+    /* height: 40px; */
 }
 
+/* Berisi total price dan akumulatif price sekarang */
+.total-list{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black;
+}
+
+/* Bagian nama dan remove button */
 .name-remove{
     display: flex;
     gap: 20px;
+}
+
+#remove-btn{
+    background:none;
+    border: none;
 }
 
 #complete-btn{
     background-color: #16DB99;
     color: white;
     width: 100%;
-    
+    border: none;
+    height: 60px;
+    margin: 0 auto;
 }
+
+.order-section p{
+    text-align: center;
+}
+
 
 
 
