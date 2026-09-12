@@ -3,6 +3,9 @@ import { menuArray } from './data.js'; // importing data
 const btnEl = document.getElementById('order-btn')
 const container = document.getElementById('container')
 const totalEl = document.getElementById('total-price')
+const payBtn = document.getElementById('pay-btn')
+const myForm = document.querySelector('.payment-modal')
+const completeBtn = document.getElementById('complete-btn')
 const orderList = []
 let total = 0
 let order_count = 0
@@ -30,32 +33,66 @@ document.addEventListener('click', function(e){
         <div class="order-bar">
             <div class="name-remove">
                 <p>${target_item.name}</p>
-                <button id="remove-btn" data-idx = "${order_count}">remove</button>
+                <button id="remove-btn" data-idx="${order_count}" >remove</button>
             </div>
             <p id="order-price">$${target_item.price}</p>
         </div>
         `
         order_count++
-        total += target_item.price
-        totalEl.textContent = `$${total}`
+        update_total(target_item.price)
         orderList.push(template_html)
         document.querySelector('.order-list').innerHTML = orderList.join('')
     }
 })
 
+// removing items functionality
 document.addEventListener('click', function(e){
-    if(e.target.dataset.idx){
-        console.log(e.target.dataset.idx)
-        orderList.splice(e.target.dataset.idx, 1)
-        order_count --
-        document.querySelector('.order-list').innerHTML = orderList.join('')
+    if(e.target.dataset.idx){ // kalo dia button remove, cari button ini index ke berapa di list orderList dari data-idx diatas, trus remove dari list dan render ulang
+        orderList.forEach(function(order){
+            if(order.includes(`data-idx="${e.target.dataset.idx}"`)){
+                let target_idx = orderList.indexOf(order)
+                let sub_amount = get_nominal_to_sub(order)
+                update_total(sub_amount * -1)
+                orderList.splice(target_idx,1)
+                document.querySelector('.order-list').innerHTML = orderList.join('')
+            }
+        })
     }
 })
 
-// assigning id from 0 - x each render to the remove button, get that specific button and get parent class 2x and remove div?
+function get_nominal_to_sub(order){
+    if(order.includes('Pizza')){
+        return 14
+    }else{
+        return 12
+    }
+}
+
+function update_total(amount){
+    total += amount
+    totalEl.textContent = `$${total}`   
+}
+
+completeBtn.addEventListener('click', function(){
+    if(orderList.length != 0){
+        document.querySelector('.payment-modal').classList.remove('hidden')
+    }
+})
+
+payBtn.addEventListener('click', function(e){
+    e.preventDefault()
+    const card_nameInput = document.getElementById('name-input')
+    console.log(card_nameInput.value)
+
+    document.querySelector('.payment-modal').classList.add('hidden')
+    document.querySelector('.order-section').classList.add('hidden')
+
+    document.querySelector('.complete-order').style.display = 'flex'
+    document.querySelector('#thanks-message').textContent = `Thanks, ${card_nameInput.value}! Your order is on its way!`
 
 
-
+    // saat pay, data nama disimpan, modal di close, orderlist juga diclose, tampilin green bar
+})
 
 
 function render(){
